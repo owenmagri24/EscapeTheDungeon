@@ -19,15 +19,9 @@ public class PlayerController : MonoBehaviour
 
     public bool isFacingLeft = true;
 
-    public Laser laser;
-
     void Start()
     {
-        laser = GameObject.Find("Laser").GetComponent<Laser>();
-        if (laser = null)
-        {
-            Debug.LogError("Laser not found ??");
-        }
+
     }
     
     void Update()
@@ -46,7 +40,7 @@ public class PlayerController : MonoBehaviour
             if (isFacingLeft)
             {
                 flip();
-                laser.transform.Translate(Vector3.right * laser.speed * Time.deltaTime);
+                firePoint.transform.Rotate(0,0,180);
             }
         }
 
@@ -55,7 +49,18 @@ public class PlayerController : MonoBehaviour
             if (!isFacingLeft)
             {
                 flip();
+                firePoint.transform.Rotate(0,0,180);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            //shoot upwards
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            //shoot downwards
         }
     }
 
