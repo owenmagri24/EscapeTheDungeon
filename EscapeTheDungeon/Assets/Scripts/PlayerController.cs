@@ -10,14 +10,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Rigidbody2D rb;
 
-    [SerializeField]
-    private GameObject _laser;
-
-    public Transform firePoint;
-
     Vector2 movement;
 
     public bool isFacingLeft = true;
+    public bool isFacingUp = false;
+
+    public GameObject firePoint;
+
 
     void Start()
     {
@@ -30,13 +29,9 @@ public class PlayerController : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.D) | Input.GetKey(KeyCode.RightArrow))
         {
-            Shoot();
-        }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
             if (isFacingLeft)
             {
                 flip();
@@ -44,7 +39,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.LeftArrow))
         {
             if (!isFacingLeft)
             {
@@ -53,13 +48,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.UpArrow))
         {
+            //rotate firepoint upwards
             //shoot upwards
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.DownArrow))
         {
+            //rotate firepoint downwards
             //shoot downwards
         }
     }
@@ -68,12 +65,6 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(rb.position + movement * movementSpeed * Time.fixedDeltaTime);
     }
 
-    void Shoot()
-    {
-        Instantiate(_laser, firePoint.position, firePoint.rotation);
-    }
-
-    //flip chara left
     void flip()
     {
         isFacingLeft = !isFacingLeft;

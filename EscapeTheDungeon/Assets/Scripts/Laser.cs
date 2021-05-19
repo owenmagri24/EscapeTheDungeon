@@ -5,19 +5,14 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 8.0f;
+    private float _speed = 15.0f;
+    public Rigidbody2D rb;
 
     // Update is called once per frame
     
     void Start()
     {
-
-    }
-    void Update()
-    {
-        transform.Translate(Vector3.left * _speed * Time.deltaTime);
-
-        //set laser boundaries after
+        rb.velocity = transform.TransformDirection(Vector2.left * _speed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -25,6 +20,12 @@ public class Laser : MonoBehaviour
         if(other.gameObject.tag == "Platform")
         {
             Destroy(gameObject);
-        }    
+        }
+
+        if(other.gameObject.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 }
