@@ -7,7 +7,6 @@ public class Weapon : MonoBehaviour
     public Transform FirePoint;
     public GameObject laserPrefab;
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))

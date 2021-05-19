@@ -5,14 +5,15 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 15.0f;
+    private float bulletSpeed = 15.0f;
     public Rigidbody2D rb;
 
     // Update is called once per frame
     
     void Start()
     {
-        rb.velocity = transform.TransformDirection(Vector2.left * _speed);
+        rb.velocity = transform.TransformDirection(Vector2.left * bulletSpeed);
+        StartCoroutine(SelfDestroy());
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -22,10 +23,16 @@ public class Laser : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(other.gameObject.tag == "Enemy")
+        else if(other.gameObject.tag == "Enemy")
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
+    }
+
+    //destroys bullet after set amount of time
+    IEnumerator SelfDestroy(){
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
 }
