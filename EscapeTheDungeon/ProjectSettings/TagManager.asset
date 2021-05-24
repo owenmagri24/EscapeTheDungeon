@@ -8,6 +8,7 @@ TagManager:
   - Laser
   - Enemy
   - Target
+  - Map
   layers:
   - Default
   - TransparentFX
