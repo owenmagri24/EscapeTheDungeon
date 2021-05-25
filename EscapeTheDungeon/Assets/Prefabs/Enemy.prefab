@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 3157353479232962589}
   - component: {fileID: 3157353479232962590}
   - component: {fileID: 3157353479232962591}
-  - component: {fileID: 3157353479232962584}
   - component: {fileID: 3157353479232962585}
   - component: {fileID: 3157353479232962588}
-  - component: {fileID: -784857360125181844}
   - component: {fileID: 616855800332822098}
   - component: {fileID: -8709383454692164149}
   - component: {fileID: -1517858473342778886}
+  - component: {fileID: 5261816917503730034}
+  - component: {fileID: -784857360125181844}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -86,18 +86,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3157353479232962584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3157353479232962586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cdfbcacda8a59545bb1827727bd489d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &3157353479232962585
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,20 +133,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-784857360125181844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3157353479232962586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 594df8ac79589dc4fb129d23d0dacb8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTarget: 0
-  minDistance: 0.1
 --- !u!114 &616855800332822098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,3 +211,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!114 &5261816917503730034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3157353479232962586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4128345b22992941ad7072b1733b894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  playerShootingDistance: 7
+  player: {fileID: 0}
+  canShoot: 1
+  projectile: {fileID: 3175379019149965205, guid: 5bfad99346312df4e9c2e9f4566e7a88,
+    type: 3}
+--- !u!114 &-784857360125181844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3157353479232962586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594df8ac79589dc4fb129d23d0dacb8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTarget: 0
+  minDistance: 0.1
+  playerShootingDistance: 7

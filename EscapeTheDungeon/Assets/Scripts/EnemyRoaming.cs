@@ -9,22 +9,21 @@ public class EnemyRoaming : MonoBehaviour
     
     [SerializeField]
     int currentTarget;
+
     [SerializeField]
     float minDistance = 0.1f;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         targets = GameObject.FindGameObjectsWithTag("Target");
         gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //distance from enemy to waypoint
         float distance = Vector3.Distance(this.transform.position,targets[currentTarget].transform.position);
-
+        
         if (distance <=minDistance)
         {
             currentTarget++;
@@ -36,6 +35,8 @@ public class EnemyRoaming : MonoBehaviour
 
             gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
         }
+
+
     }
 }
 

@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     void DirectionalShooting(){
         //Method to change firePoint rotation depending on keypress
 
-        if (Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             if(isFacingLeft){
                 flip();
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             firePoint.transform.rotation = Quaternion.Euler(0,0,180);
         }
 
-        else if (Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.A))
         {
             if(!isFacingLeft){
                 flip();
@@ -57,12 +57,12 @@ public class PlayerController : MonoBehaviour
             firePoint.transform.rotation = Quaternion.Euler(0,0,0);
         }
 
-        else if (Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.W))
         {
             firePoint.transform.rotation = Quaternion.Euler(0,0,-90);
         }
 
-        else if (Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.S))
         {
             firePoint.transform.rotation = Quaternion.Euler(0,0,90);
         }
