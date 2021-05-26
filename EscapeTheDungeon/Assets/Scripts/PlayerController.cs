@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public bool isFacingLeft = true;
 
     public GameObject firePoint;
+    public int health = 3;
 
 
     void Start()
