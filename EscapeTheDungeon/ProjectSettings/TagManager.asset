@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Target
   - Map
+  - MedKit
   layers:
   - Default
   - TransparentFX
