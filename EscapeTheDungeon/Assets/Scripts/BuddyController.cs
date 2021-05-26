@@ -7,11 +7,6 @@ public class BuddyController : MonoBehaviour
 {
     [SerializeField]
     private float buddyMedkitDistance;
-
-    GameObject[] medkit;
-
-    [SerializeField]
-    private int currentTarget;
     public Transform player;
 
     public AIDestinationSetter aiDestinationSetter;
@@ -19,28 +14,40 @@ public class BuddyController : MonoBehaviour
     public AIPath aIPath;
 
     private bool medkitAvailable = true;
+    GameObject[] medkits;
 
-
-    void Start()
-    {
-        medkit = GameObject.FindGameObjectsWithTag("MedKit");
-    }
-
-    
     void Update()
     {
         if(medkitAvailable == true){
-            float distance = Vector2.Distance(transform.position, medkit[currentTarget].transform.position);
+            //find distance between buddy and closest medkit
+            float distance = Vector2.Distance(transform.position, FindClosestMedkit().transform.position);
 
             if(distance <= buddyMedkitDistance)
             {
-                aiDestinationSetter.GetComponent<AIDestinationSetter>().target = medkit[currentTarget].transform;
+                //medkit set as target
+                aiDestinationSetter.GetComponent<AIDestinationSetter>().target = FindClosestMedkit().transform;
+                //endReachedDistance set to 1 to go on top of target
                 aIPath.GetComponent<AIPath>().endReachedDistance = 1f;
             }
-
         }
-        
+    }
 
+    //function to find and return closestmedkit as gameobject
+    public GameObject FindClosestMedkit(){
+        medkits = GameObject.FindGameObjectsWithTag("MedKit");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 buddyPosition = transform.position;
+
+        foreach (GameObject medkit in medkits){
+            Vector3 difference = medkit.transform.position - buddyPosition;
+            float curDistance = difference.sqrMagnitude;
+            if(curDistance < distance){
+                closest = medkit;
+                distance = curDistance;
+            }
+        }
+        return closest;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -48,14 +55,15 @@ public class BuddyController : MonoBehaviour
         if(other.gameObject.tag == "MedKit")
         {
             Destroy(other.gameObject);
-            currentTarget++;
 
-            if(currentTarget == medkit.Length)
-            {
+            //no medkits left on the map
+            if(medkits.Length <= 1){
                 medkitAvailable = false;
             }
 
+            //changes target to player after collision with medkit
             aiDestinationSetter.GetComponent<AIDestinationSetter>().target = player.transform;
+            //change endReachedDistance to 3f so hes not too close to player
             aIPath.GetComponent<AIPath>().endReachedDistance = 3f;
         }
     }
