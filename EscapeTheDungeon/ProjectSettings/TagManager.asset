@@ -10,6 +10,8 @@ TagManager:
   - Target
   - Map
   - MedKit
+  - Key
+  - Door
   layers:
   - Default
   - TransparentFX

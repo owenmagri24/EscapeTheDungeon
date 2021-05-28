@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class PlayerController : MonoBehaviour
     public GameObject firePoint;
     public int health = 3;
 
+    [SerializeField]
+    private Text keyCounter;
+    private int keyAmount;
+
+    public GameManager GameManager;
+
 
     void Start()
     {
@@ -28,6 +35,8 @@ public class PlayerController : MonoBehaviour
         //Movement Controls
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        keyCounter.text = "Keys: "+ keyAmount + "/3";
 
         DirectionalShooting();
     }
@@ -90,5 +99,19 @@ public class PlayerController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+private void OnTriggerEnter2D(Collider2D col) 
+    {
+        if (col.gameObject.tag == "Key")
+        {
+            keyAmount +=1;
+            Destroy(col.gameObject);
+        }
+
+        else if (col.gameObject.tag == "Door" && keyAmount == 3)
+        {
+            GameManager.GameComplete();
+        }
     }
 }

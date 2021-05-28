@@ -24,4 +24,9 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    public void GameComplete()
+    {
+        SceneManager.LoadScene("GameComplete");
+    }
 }
