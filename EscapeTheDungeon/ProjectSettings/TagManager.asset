@@ -12,6 +12,7 @@ TagManager:
   - MedKit
   - Key
   - Door
+  - BeginDoor
   layers:
   - Default
   - TransparentFX

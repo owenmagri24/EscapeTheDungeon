@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Text keyCounter;
     private int keyAmount;
-
     public GameManager GameManager;
 
     void Start()
@@ -112,5 +111,5 @@ public class PlayerController : MonoBehaviour
             {
                 GameManager.GameComplete();
             }
-    }
+        }
 }
