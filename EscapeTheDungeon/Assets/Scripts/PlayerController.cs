@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
 
     public GameManager GameManager;
 
-
     void Start()
     {
 
@@ -101,17 +100,17 @@ public class PlayerController : MonoBehaviour
         transform.localScale = theScale;
     }
 
-private void OnTriggerEnter2D(Collider2D col) 
-    {
-        if (col.gameObject.tag == "Key")
+    private void OnTriggerEnter2D(Collider2D col) 
         {
-            keyAmount +=1;
-            Destroy(col.gameObject);
-        }
+            if (col.gameObject.tag == "Key")
+            {
+                keyAmount +=1;
+                Destroy(col.gameObject);
+            }
 
-        else if (col.gameObject.tag == "Door" && keyAmount == 3)
-        {
-            GameManager.GameComplete();
-        }
+            else if (col.gameObject.tag == "Door" && keyAmount == 3)
+            {
+                GameManager.GameComplete();
+            }
     }
 }
