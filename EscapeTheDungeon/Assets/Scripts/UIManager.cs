@@ -8,6 +8,10 @@ public class UIManager : MonoBehaviour
     public Sprite[] heartSprites;
     public Image HeartUI;
 
+    public Sprite[] keySprites;
+
+    public Image KeyUI;
+
     private PlayerController player;
 
     void Start()
@@ -20,6 +24,6 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         HeartUI.sprite = heartSprites[player.health];
-
+        KeyUI.sprite = keySprites[player.keyAmount];
     }
 }
