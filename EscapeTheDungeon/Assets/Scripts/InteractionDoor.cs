@@ -22,8 +22,7 @@ public class InteractionDoor : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(this.transform.position,player.transform.position);
-
-        Debug.Log("Min Distance:" + minDistance);
+        
         if (distance <= minDistance)
         {
             interactText.text = "Press 'E' to open the door";

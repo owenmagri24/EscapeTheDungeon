@@ -8,10 +8,13 @@ public class Laser : MonoBehaviour
     private float bulletSpeed = 15.0f;
     public Rigidbody2D rb;
 
+    SpawnManager spawnManager;
+
     // Update is called once per frame
     
     void Start()
     {
+        spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
         rb.velocity = transform.TransformDirection(Vector2.left * bulletSpeed);
         StartCoroutine(SelfDestroy());
     }
@@ -25,12 +28,13 @@ public class Laser : MonoBehaviour
 
         else if(other.gameObject.tag == "Enemy")
         {
+            spawnManager.SpawnEnemy();
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }
 
-    //destroys bullet after set amount of time
+    //destroys bullet when spawns after set amount of time
     IEnumerator SelfDestroy(){
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);

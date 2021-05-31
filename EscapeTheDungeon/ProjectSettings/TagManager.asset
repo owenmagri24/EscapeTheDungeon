@@ -13,6 +13,7 @@ TagManager:
   - Key
   - Door
   - BeginDoor
+  - SpawnManager
   layers:
   - Default
   - TransparentFX

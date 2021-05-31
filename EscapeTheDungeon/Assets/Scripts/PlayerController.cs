@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
             firePoint.transform.rotation = Quaternion.Euler(0,0,90);
         }
 
+        /*
         //using keycode instead of keycodedown because both need to be pressed simultaneously
         else if(Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S)){
             firePoint.transform.rotation = Quaternion.Euler(0,0,45);
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour
         else if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W)){
             firePoint.transform.rotation = Quaternion.Euler(0,0,225);
         }
+        */
     }
 
     void flip()
