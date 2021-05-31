@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 5073797363404774314}
   - component: {fileID: 5073797363404774315}
   - component: {fileID: 5073797363404774308}
+  - component: {fileID: 1446113217}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -276,7 +277,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259204274430294444}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.68, y: 4.29, z: 17.623}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
@@ -367,6 +368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTarget: 0
   minDistance: 18
+  animator: {fileID: 1446113217}
 --- !u!114 &5073797363404774313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,6 +465,25 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!95 &1446113217
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259204274430294444}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f3039315f32a0da4ba2f0676ac89070b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1530019128725594092
 GameObject:
   m_ObjectHideFlags: 0

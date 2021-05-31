@@ -12,6 +12,8 @@ public class EnemyRoaming : MonoBehaviour
 
     [SerializeField]
     float minDistance = 0.1f;
+
+    public Animator animator;
     
     void Start()
     {
@@ -35,8 +37,25 @@ public class EnemyRoaming : MonoBehaviour
 
             gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
         }
+        
+        Controller();
+    }
 
+    void Controller()
+    {
+        if (transform.rotation.eulerAngles.z < 360 && transform.rotation.eulerAngles.z > 180)
+        {
+            Debug.Log("rotated downwards");
+            animator.SetBool("isVertical", true);
+            animator.SetFloat("vertRotation", 0);
+        }
 
+        if (transform.rotation.eulerAngles.z < 180 && transform.rotation.eulerAngles.z > 0)
+        {
+            Debug.Log("rotating upwards");
+            animator.SetBool("isVertical", true);
+            animator.SetFloat("vertRotation", 180);
+        }
     }
 }
 

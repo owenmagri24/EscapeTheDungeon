@@ -8,9 +8,12 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: rotation
+  - m_ConditionMode: 1
+    m_ConditionEvent: isHorizontal
     m_EventTreshold: 90
+  - m_ConditionMode: 2
+    m_ConditionEvent: isVertical
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1718001829692613097}
   m_Solo: 0
@@ -89,8 +92,11 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: rotation
+  - m_ConditionMode: 1
+    m_ConditionEvent: isVertical
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isHorizontal
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2250096637816560057}
@@ -115,8 +121,20 @@ AnimatorController:
   m_Name: Enemy
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: rotation
-    m_Type: 3
+  - m_Name: isHorizontal
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isVertical
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: vertRotation
+    m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -142,9 +160,12 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: rotation
+  - m_ConditionMode: 1
+    m_ConditionEvent: isHorizontal
     m_EventTreshold: 90
+  - m_ConditionMode: 2
+    m_ConditionEvent: isVertical
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1718001829692613097}
   m_Solo: 0
@@ -223,9 +244,12 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: rotation
+  - m_ConditionMode: 1
+    m_ConditionEvent: isVertical
     m_EventTreshold: 180
+  - m_ConditionMode: 3
+    m_ConditionEvent: vertRotation
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4464940321534051968}
   m_Solo: 0
@@ -247,7 +271,13 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isVertical
+    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: vertRotation
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2250096637816560057}
   m_Solo: 0
@@ -270,9 +300,12 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: rotation
+  - m_ConditionMode: 1
+    m_ConditionEvent: isVertical
     m_EventTreshold: 180
+  - m_ConditionMode: 2
+    m_ConditionEvent: isHorizontal
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4464940321534051968}
   m_Solo: 0
