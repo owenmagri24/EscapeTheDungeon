@@ -26,37 +26,38 @@ public class Laser : MonoBehaviour
             Destroy(gameObject);
         }
 
-        else if(other.gameObject.tag == "Enemy")
+        else if(other.gameObject.name == "Enemy_0")
         {
+            spawnManager.enemyHit = 0;
             spawnManager.SpawnEnemy();
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
-
-        else if(other.gameObject.tag == "Enemy2")
+        else if(other.gameObject.name == "Enemy_1")
         {
-            spawnManager.SpawnEnemy2();
+            spawnManager.enemyHit = 1;
+            spawnManager.SpawnEnemy();
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
-
-        else if(other.gameObject.tag == "Enemy3")
+        else if(other.gameObject.name == "Enemy_2")
         {
-            spawnManager.SpawnEnemy3();
+            spawnManager.enemyHit = 2;
+            spawnManager.SpawnEnemy();
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
-
-        else if(other.gameObject.tag == "Enemy4")
+        else if(other.gameObject.name == "Enemy_3")
         {
-            spawnManager.SpawnEnemy4();
+            spawnManager.enemyHit = 3;
+            spawnManager.SpawnEnemy();
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
-
-        else if(other.gameObject.tag == "Enemy5")
+        else if(other.gameObject.name == "Enemy_4")
         {
-            spawnManager.SpawnEnemy5();
+            spawnManager.enemyHit = 4;
+            spawnManager.SpawnEnemy();
             Destroy(other.gameObject);
             Destroy(gameObject);
         }

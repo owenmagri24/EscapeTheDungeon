@@ -8,7 +8,7 @@ public class EnemyRoaming : MonoBehaviour
     GameObject[] targets;
     
     [SerializeField]
-    int currentTarget;
+    int currentTarget = 0;
 
     [SerializeField]
     float minDistance = 0.1f;
@@ -19,16 +19,43 @@ public class EnemyRoaming : MonoBehaviour
 
     [SerializeField]
     bool isNotRotated = true;
+    GameObject[] enemySpawnPoints;
+
+    SpawnManager spawnManager;
     
     void Start()
     {
-        targets = GameObject.FindGameObjectsWithTag("Target");
-        gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+
+        if(this.gameObject.name == "Enemy_0"){
+            targets = GameObject.FindGameObjectsWithTag("Target0");
+            gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
+        }
+
+        else if(this.gameObject.name == "Enemy_1"){
+            targets = GameObject.FindGameObjectsWithTag("Target1");
+            gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
+        }
+        else if(this.gameObject.name == "Enemy_2"){
+            targets = GameObject.FindGameObjectsWithTag("Target2");
+            gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
+        }
+        else if(this.gameObject.name == "Enemy_3"){
+            targets = GameObject.FindGameObjectsWithTag("Target3");
+            gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
+        }
+        else if(this.gameObject.name == "Enemy_4"){
+            targets = GameObject.FindGameObjectsWithTag("Target4");
+            gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
+        }
+        
+
         m_spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+
         //distance from enemy to waypoint
         float distance = Vector3.Distance(this.transform.position,targets[currentTarget].transform.position);
         

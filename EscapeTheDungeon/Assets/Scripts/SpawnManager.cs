@@ -1,38 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject enemyPrefab;
-
-    [SerializeField]
-    private GameObject enemyPrefab2;
-
-    [SerializeField]
-    private GameObject enemyPrefab3;
-
-    [SerializeField]
-    private GameObject enemyPrefab4;
-
-    [SerializeField]
-    private GameObject enemyPrefab5;
-
-    [SerializeField]
-    private Transform spawnPoint;
-
-    [SerializeField]
-    private Transform spawnPoint2;
-
-    [SerializeField]
-    private Transform spawnPoint3;
-
-    [SerializeField]
-    private Transform spawnPoint4;
-
-    [SerializeField]
-    private Transform spawnPoint5;
 
     [SerializeField]
     private float enemyRespawnTimer;
@@ -41,9 +15,25 @@ public class SpawnManager : MonoBehaviour
     private GameObject ratPrefab;
 
     GameObject[] ratSpawnPoints;
+    GameObject[] enemySpawnPoints;
+    public int thisEnemy = 0;
 
-    private void Start() {
+    public int enemyHit;
+
+    Laser laser;
+
+    void Start() {
+        laser = gameObject.GetComponent<Laser>();
         ratSpawnPoints = GameObject.FindGameObjectsWithTag("RatSpawn");
+        enemySpawnPoints = GameObject.FindGameObjectsWithTag("EnemySpawn");
+        
+        for(int i = 0; i < enemySpawnPoints.Length; i++)
+        {
+            GameObject currentEnemy = (GameObject)Instantiate(enemyPrefab, enemySpawnPoints[i].transform.position, Quaternion.identity);
+
+            currentEnemy.name = string.Format("Enemy_{0}", thisEnemy);
+            thisEnemy++;
+        }
 
         for(int i = 0; i < ratSpawnPoints.Length; i++)
         {
@@ -55,49 +45,30 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine(SpawnEnemyRoutine());
     }
 
-    public void SpawnEnemy2(){
-        StartCoroutine(SpawnEnemyRoutine2());
-    }
-
-    public void SpawnEnemy3(){
-        StartCoroutine(SpawnEnemyRoutine3());
-    }
-
-    public void SpawnEnemy4(){
-        StartCoroutine(SpawnEnemyRoutine4());
-    }
-
-    public void SpawnEnemy5(){
-        StartCoroutine(SpawnEnemyRoutine5());
-    }
-
     IEnumerator SpawnEnemyRoutine(){
+        Debug.Log(enemyHit);
         yield return new WaitForSeconds(enemyRespawnTimer);
 
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-    }
-
-    IEnumerator SpawnEnemyRoutine2(){
-        yield return new WaitForSeconds(enemyRespawnTimer);
-
-        Instantiate(enemyPrefab2,spawnPoint2.position, Quaternion.identity);
-    }
-
-    IEnumerator SpawnEnemyRoutine3(){
-        yield return new WaitForSeconds(enemyRespawnTimer);
-
-        Instantiate(enemyPrefab3,spawnPoint3.position, Quaternion.identity);
-    }
-
-    IEnumerator SpawnEnemyRoutine4(){
-        yield return new WaitForSeconds(enemyRespawnTimer);
-
-        Instantiate(enemyPrefab4,spawnPoint4.position, Quaternion.identity);
-    }
-
-    IEnumerator SpawnEnemyRoutine5(){
-        yield return new WaitForSeconds(enemyRespawnTimer);
-
-        Instantiate(enemyPrefab5,spawnPoint5.position, Quaternion.identity);
+        if(enemyHit == 0){
+            GameObject currentEnemy = (GameObject)Instantiate(enemyPrefab, enemySpawnPoints[0].transform.position, Quaternion.identity);
+            currentEnemy.name = string.Format("Enemy_{0}", 0);
+        }
+        else if(enemyHit == 1){
+            GameObject currentEnemy = (GameObject)Instantiate(enemyPrefab, enemySpawnPoints[1].transform.position, Quaternion.identity);
+            currentEnemy.name = string.Format("Enemy_{0}", 1);
+        }
+        else if(enemyHit == 2){
+            GameObject currentEnemy = (GameObject)Instantiate(enemyPrefab, enemySpawnPoints[2].transform.position, Quaternion.identity);
+            currentEnemy.name = string.Format("Enemy_{0}", 2);
+        }
+        else if(enemyHit == 3){
+            GameObject currentEnemy = (GameObject)Instantiate(enemyPrefab, enemySpawnPoints[3].transform.position, Quaternion.identity);
+            currentEnemy.name = string.Format("Enemy_{0}", 3);
+        }
+        else if(enemyHit == 4){
+            GameObject currentEnemy = (GameObject)Instantiate(enemyPrefab, enemySpawnPoints[4].transform.position, Quaternion.identity);
+            currentEnemy.name = string.Format("Enemy_{0}", 4);
+        }
+        
     }
 }

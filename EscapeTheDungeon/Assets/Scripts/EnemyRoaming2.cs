@@ -26,20 +26,7 @@ public class EnemyRoaming2 : MonoBehaviour
 
     void Update()
     {
-        //distance from enemy to waypoint
-        float distance = Vector3.Distance(this.transform.position,targets[currentTarget].transform.position);
         
-        if (distance <=minDistance)
-        {
-            currentTarget++;
-
-            if (currentTarget == targets.Length)
-            {
-                currentTarget = 0;
-            }
-
-            gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
-        }
         
         Debug.Log(transform.rotation.eulerAngles.z);
         Controller();

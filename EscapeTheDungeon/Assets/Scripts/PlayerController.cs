@@ -20,11 +20,11 @@ public class PlayerController : MonoBehaviour
     public int keyAmount;
     public GameManager GameManager;
 
-    void Start()
-    {
+    SpriteRenderer spriteRenderer;
 
+    void Start() {
+        
     }
-    
     void Update()
     {
         //Movement Controls
@@ -107,6 +107,16 @@ public class PlayerController : MonoBehaviour
             else if (col.gameObject.tag == "Door" && keyAmount == 3)
             {
                 GameManager.GameComplete();
+            }
+
+            else if (col.gameObject.name == "EasterEgg"){
+                GameObject chicken = GameObject.Find("Chicken");
+                chicken.GetComponent<SpriteRenderer>().enabled = true;
+            }
+
+            else if(col.gameObject.name == "Chicken"){
+                Destroy(col.gameObject);
+                //insert some text
             }
         }
 }

@@ -7,7 +7,6 @@ TagManager:
   - Platform
   - Laser
   - Enemy
-  - Target
   - Map
   - MedKit
   - Key
@@ -15,15 +14,14 @@ TagManager:
   - BeginDoor
   - SpawnManager
   - Target2
-  - Enemy2
   - Target3
-  - Enemy3
   - Target4
-  - Enemy4
-  - Enemy5
   - Target5
   - RatTarget
   - RatSpawn
+  - EnemySpawn
+  - Target0
+  - Target1
   layers:
   - Default
   - TransparentFX
