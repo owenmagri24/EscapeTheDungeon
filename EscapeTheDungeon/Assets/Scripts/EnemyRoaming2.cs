@@ -14,6 +14,9 @@ public class EnemyRoaming2 : MonoBehaviour
     float minDistance = 0.1f;
 
     public Animator animator;
+
+    bool isFacingRight = true;
+
     
     void Start()
     {
@@ -38,6 +41,7 @@ public class EnemyRoaming2 : MonoBehaviour
             gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
         }
         
+        Debug.Log(transform.rotation.eulerAngles.z);
         Controller();
     }
 
@@ -45,15 +49,15 @@ public class EnemyRoaming2 : MonoBehaviour
     {
         if (transform.rotation.eulerAngles.z < 360 && transform.rotation.eulerAngles.z > 180)
         {
-            //Debug.Log("rotated downwards");
-            animator.SetBool("isVertical", true);
+            Debug.Log("rotated right");
+            animator.SetBool("isHorizontal", true);
             animator.SetFloat("vertRotation", 0);
         }
 
         if (transform.rotation.eulerAngles.z < 180 && transform.rotation.eulerAngles.z > 0)
         {
-            //Debug.Log("rotating upwards");
-            animator.SetBool("isVertical", true);
+            Debug.Log("rotating left");
+            animator.SetBool("isHorizontal", true);
             animator.SetFloat("vertRotation", 180);
         }
     }

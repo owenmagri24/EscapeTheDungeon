@@ -14,11 +14,17 @@ public class EnemyRoaming : MonoBehaviour
     float minDistance = 0.1f;
 
     public Animator animator;
+
+    SpriteRenderer m_spriteRenderer;
+
+    [SerializeField]
+    bool isNotRotated = true;
     
     void Start()
     {
         targets = GameObject.FindGameObjectsWithTag("Target");
         gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -37,6 +43,8 @@ public class EnemyRoaming : MonoBehaviour
 
             gameObject.GetComponent<AIDestinationSetter>().target = targets[currentTarget].transform;
         }
+
+        //Debug.Log(transform.rotation.eulerAngles.z);
         
         Controller();
     }
@@ -45,16 +53,28 @@ public class EnemyRoaming : MonoBehaviour
     {
         if (transform.rotation.eulerAngles.z < 360 && transform.rotation.eulerAngles.z > 180)
         {
-            //Debug.Log("rotated downwards");
+            //Debug.Log("Walking Forward");
             animator.SetBool("isVertical", true);
             animator.SetFloat("vertRotation", 0);
+
+            if (isNotRotated)
+            {
+                m_spriteRenderer.flipY = true;
+                isNotRotated = false;
+            }
         }
 
         if (transform.rotation.eulerAngles.z < 180 && transform.rotation.eulerAngles.z > 0)
         {
-            //Debug.Log("rotating upwards");
+            //Debug.Log("Walking Back");
             animator.SetBool("isVertical", true);
             animator.SetFloat("vertRotation", 180);
+            
+            if (!isNotRotated)
+            {
+                m_spriteRenderer.flipY = false;
+                isNotRotated = true;
+            }
         }
     }
 }
