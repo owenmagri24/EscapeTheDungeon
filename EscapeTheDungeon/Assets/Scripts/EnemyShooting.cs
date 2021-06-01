@@ -6,9 +6,6 @@ using Pathfinding;
 public class EnemyShooting : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
-
-    [SerializeField]
     private float playerShootingDistance;
 
     [SerializeField]

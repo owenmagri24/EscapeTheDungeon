@@ -22,6 +22,8 @@ TagManager:
   - Enemy4
   - Enemy5
   - Target5
+  - RatTarget
+  - RatSpawn
   layers:
   - Default
   - TransparentFX

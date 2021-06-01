@@ -75,6 +75,7 @@ public class BuddyController : MonoBehaviour
         }
     }
 
+    //ignores player collision
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Player"){
             Physics2D.IgnoreCollision(other.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());

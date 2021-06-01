@@ -37,6 +37,20 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private float enemyRespawnTimer;
 
+    [SerializeField]
+    private GameObject ratPrefab;
+
+    GameObject[] ratSpawnPoints;
+
+    private void Start() {
+        ratSpawnPoints = GameObject.FindGameObjectsWithTag("RatSpawn");
+
+        for(int i = 0; i < ratSpawnPoints.Length; i++)
+        {
+            Instantiate(ratPrefab, ratSpawnPoints[i].transform.position, Quaternion.identity);
+        }
+    }
+
     public void SpawnEnemy(){
         StartCoroutine(SpawnEnemyRoutine());
     }
