@@ -32,6 +32,34 @@ public class Laser : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
+
+        else if(other.gameObject.tag == "Enemy2")
+        {
+            spawnManager.SpawnEnemy2();
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+
+        else if(other.gameObject.tag == "Enemy3")
+        {
+            spawnManager.SpawnEnemy3();
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+
+        else if(other.gameObject.tag == "Enemy4")
+        {
+            spawnManager.SpawnEnemy4();
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+
+        else if(other.gameObject.tag == "Enemy5")
+        {
+            spawnManager.SpawnEnemy5();
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 
     //destroys bullet when spawns after set amount of time

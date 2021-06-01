@@ -33,7 +33,8 @@ public class EnemyShooting : MonoBehaviour
 
         if(distance <= playerShootingDistance){
             GetComponent<AIPath>().maxSpeed = 0; //enemy stops if player is in range
-        } else{
+        } 
+        else{
             GetComponent<AIPath>().maxSpeed = 3; //enemy continues if player leaves
         }
 

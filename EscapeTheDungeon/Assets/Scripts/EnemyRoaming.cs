@@ -45,14 +45,14 @@ public class EnemyRoaming : MonoBehaviour
     {
         if (transform.rotation.eulerAngles.z < 360 && transform.rotation.eulerAngles.z > 180)
         {
-            Debug.Log("rotated downwards");
+            //Debug.Log("rotated downwards");
             animator.SetBool("isVertical", true);
             animator.SetFloat("vertRotation", 0);
         }
 
         if (transform.rotation.eulerAngles.z < 180 && transform.rotation.eulerAngles.z > 0)
         {
-            Debug.Log("rotating upwards");
+            //Debug.Log("rotating upwards");
             animator.SetBool("isVertical", true);
             animator.SetFloat("vertRotation", 180);
         }

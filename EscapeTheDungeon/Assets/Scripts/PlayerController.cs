@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
             firePoint.transform.rotation = Quaternion.Euler(0,0,90);
         }
 
-        /*
+        /* 8 directional shooting 
         //using keycode instead of keycodedown because both need to be pressed simultaneously
         else if(Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S)){
             firePoint.transform.rotation = Quaternion.Euler(0,0,45);

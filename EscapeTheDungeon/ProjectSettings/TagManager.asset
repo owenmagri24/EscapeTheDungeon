@@ -14,6 +14,14 @@ TagManager:
   - Door
   - BeginDoor
   - SpawnManager
+  - Target2
+  - Enemy2
+  - Target3
+  - Enemy3
+  - Target4
+  - Enemy4
+  - Enemy5
+  - Target5
   layers:
   - Default
   - TransparentFX

@@ -383,6 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   playerShootingDistance: 7
+  playerWalkingDistance: 10
   player: {fileID: 0}
   canShoot: 1
   projectile: {fileID: 3175379019149965205, guid: 5bfad99346312df4e9c2e9f4566e7a88,
