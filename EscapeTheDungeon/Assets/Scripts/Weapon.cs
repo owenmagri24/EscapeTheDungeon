@@ -7,11 +7,14 @@ public class Weapon : MonoBehaviour
     public Transform FirePoint;
     public GameObject laserPrefab;
 
+    public Animator animatora;
+
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            animatora.SetBool("isAttacking", true);
         }
     }
 

@@ -48,10 +48,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            if(isFacingLeft){
+            /*if(isFacingLeft){
                 flip();
                 isFacingLeft = false;
-            }
+            }*/
             firePoint.transform.rotation = Quaternion.Euler(0,0,180);
             animatora.SetBool("isMoving", true);
             animatora.SetBool("isRight", true);
@@ -60,14 +60,15 @@ public class PlayerController : MonoBehaviour
             animatora.SetBool("isBack", false);
             animatora.SetBool("isHorizontal", true);
             animatora.SetBool("isVertical", false);
+            animatora.SetBool("isAttacking", false);
         }
 
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            if(!isFacingLeft){
+            /*if(!isFacingLeft){
                 flip();
                 isFacingLeft = true;
-            }
+            }*/
             firePoint.transform.rotation = Quaternion.Euler(0,0,0);
             animatora.SetBool("isMoving", true);
             animatora.SetBool("isRight", false);
@@ -76,6 +77,7 @@ public class PlayerController : MonoBehaviour
             animatora.SetBool("isBack", false);
             animatora.SetBool("isHorizontal", true);
             animatora.SetBool("isVertical", false);
+            animatora.SetBool("isAttacking", false);
         }
 
         else if (Input.GetKeyDown(KeyCode.W))
@@ -89,6 +91,7 @@ public class PlayerController : MonoBehaviour
             animatora.SetBool("isBack", true);
             animatora.SetBool("isVertical", true);
             animatora.SetBool("isHorizontal", false);
+            animatora.SetBool("isAttacking", false);
         }
 
         else if (Input.GetKeyDown(KeyCode.S))
@@ -102,7 +105,7 @@ public class PlayerController : MonoBehaviour
             animatora.SetBool("isBack", false);
             animatora.SetBool("isVertical", true);
             animatora.SetBool("isHorizontal", false);
-            
+            animatora.SetBool("isAttacking", false);
         }
 
         /* 8 directional shooting 
