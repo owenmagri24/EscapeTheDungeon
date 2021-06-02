@@ -19,9 +19,8 @@ public class PlayerController : MonoBehaviour
     public int health = 3;
     public int keyAmount;
     public GameManager GameManager;
-
     SpriteRenderer spriteRenderer;
-
+    public Text objectives;
     void Start() {
         
     }
@@ -102,6 +101,11 @@ public class PlayerController : MonoBehaviour
             {
                 keyAmount +=1;
                 Destroy(col.gameObject);
+
+                if (keyAmount == 1)
+                {
+                    StartCoroutine(OneKeyCoroutine());
+                }
             }
 
             else if (col.gameObject.tag == "Door" && keyAmount == 3)
@@ -112,11 +116,57 @@ public class PlayerController : MonoBehaviour
             else if (col.gameObject.name == "EasterEgg"){
                 GameObject chicken = GameObject.Find("Chicken");
                 chicken.GetComponent<SpriteRenderer>().enabled = true;
+                objectives.text = "What on earth are you doing?";
             }
 
             else if(col.gameObject.name == "Chicken"){
-                Destroy(col.gameObject);
-                //insert some text
+                Destroy(col.gameObject); 
+                objectives.text = "A chicken?\nCool, I like it!";
+                StartCoroutine(TextDisappearCoroutine());
             }
+
+            else if(col.gameObject.name == "Objective1")
+            {
+                Destroy(col.gameObject);
+                StartCoroutine(IntroCoroutine());
+            }
+
+            else if(col.gameObject.name == "Objective2")
+            {
+                Destroy(col.gameObject);
+                objectives.text = "I wonder what's around here..";
+                StartCoroutine(TextDisappearCoroutine());
+            }
+
+            else if(col.gameObject.name == "Objective3")
+            {
+                Destroy(col.gameObject);
+                objectives.text = "It might look friendl-\nNever mind, that thing is clearly hostile!";
+                StartCoroutine(TextDisappearCoroutine());
+            }
+        }
+
+        IEnumerator TextDisappearCoroutine()
+        {
+            yield return new WaitForSeconds(3);
+            objectives.text = " ";
+        }
+
+        IEnumerator IntroCoroutine()
+        {
+            objectives.text = "Welcome to great labryinth of... Escape the Dungeon!";
+            yield return new WaitForSeconds(3);
+            objectives.text = "Not exactly the most original name right?\nWe're aware of it";
+            yield return new WaitForSeconds(3);
+            objectives.text = "For now just take your first left..";
+            yield return new WaitForSeconds(3);
+            objectives.text = " ";
+        }
+
+        IEnumerator OneKeyCoroutine()
+        {
+            objectives.text = "A key... I wonder where the door for it is";
+            yield return new WaitForSeconds(3);
+            objectives.text = " ";
         }
 }

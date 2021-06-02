@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Pathfinding;
 
 public class BuddyController : MonoBehaviour
@@ -17,6 +18,7 @@ public class BuddyController : MonoBehaviour
 
     private bool medkitAvailable = true;
     GameObject[] medkits;
+    public Text objectives;
 
     void Start() {
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -73,6 +75,13 @@ public class BuddyController : MonoBehaviour
             //change endReachedDistance to 3f so hes not too close to player
             aIPath.GetComponent<AIPath>().endReachedDistance = 3f;
         }
+
+        else if (other.gameObject.name == "Objective4")
+        {
+            DestroyObjectiveMedkit();
+            objectives.text = "Hey buddy, you found a medkit!\nI wonder if I'll get some more hitpoints for this";
+            StartCoroutine(TextDisappearCoroutine());
+        }
     }
 
     //ignores player collision
@@ -80,5 +89,18 @@ public class BuddyController : MonoBehaviour
         if(other.gameObject.tag == "Player"){
             Physics2D.IgnoreCollision(other.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
+    }
+
+    IEnumerator TextDisappearCoroutine()
+        {
+            yield return new WaitForSeconds(3);
+            objectives.text = " ";
+        }
+
+    void DestroyObjectiveMedkit()
+    {
+        GameObject[] medkitObjectives = GameObject.FindGameObjectsWithTag("Objective4");
+        foreach (GameObject Objective4 in medkitObjectives)
+        GameObject.Destroy(Objective4);
     }
 }

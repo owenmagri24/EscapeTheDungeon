@@ -12,6 +12,8 @@ public class InteractionDoor : MonoBehaviour
 
     public Text interactText;
 
+    public Text objectives;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,7 @@ public class InteractionDoor : MonoBehaviour
         {
             Destroy(gameObject);
             interactText.text = " ";
+            objectives.text = " ";
         }
     }
 }
