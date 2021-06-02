@@ -21,8 +21,11 @@ public class PlayerController : MonoBehaviour
     public GameManager GameManager;
     SpriteRenderer spriteRenderer;
     public Text objectives;
+
+    public Animator animatora;
     void Start() {
-        
+        animatora = gameObject.GetComponent<Animator>();
+        animatora.SetBool("isMoving", false);
     }
     void Update()
     {
@@ -31,6 +34,8 @@ public class PlayerController : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         DirectionalShooting();
+
+        Debug.Log(rb.velocity.magnitude); //check after
     }
 
     void FixedUpdate() {
@@ -48,6 +53,13 @@ public class PlayerController : MonoBehaviour
                 isFacingLeft = false;
             }
             firePoint.transform.rotation = Quaternion.Euler(0,0,180);
+            animatora.SetBool("isMoving", true);
+            animatora.SetBool("isRight", true);
+            animatora.SetBool("isLeft", false);
+            animatora.SetBool("isFront", false);
+            animatora.SetBool("isBack", false);
+            animatora.SetBool("isHorizontal", true);
+            animatora.SetBool("isVertical", false);
         }
 
         else if (Input.GetKeyDown(KeyCode.A))
@@ -57,16 +69,40 @@ public class PlayerController : MonoBehaviour
                 isFacingLeft = true;
             }
             firePoint.transform.rotation = Quaternion.Euler(0,0,0);
+            animatora.SetBool("isMoving", true);
+            animatora.SetBool("isRight", false);
+            animatora.SetBool("isLeft", true);
+            animatora.SetBool("isFront", false);
+            animatora.SetBool("isBack", false);
+            animatora.SetBool("isHorizontal", true);
+            animatora.SetBool("isVertical", false);
         }
 
         else if (Input.GetKeyDown(KeyCode.W))
         {
             firePoint.transform.rotation = Quaternion.Euler(0,0,-90);
+            animatora.Play("walkBack");
+            animatora.SetBool("isMoving", true);
+            animatora.SetBool("isRight", false);
+            animatora.SetBool("isLeft", false);
+            animatora.SetBool("isFront", false);
+            animatora.SetBool("isBack", true);
+            animatora.SetBool("isVertical", true);
+            animatora.SetBool("isHorizontal", false);
         }
 
         else if (Input.GetKeyDown(KeyCode.S))
         {
             firePoint.transform.rotation = Quaternion.Euler(0,0,90);
+            animatora.Play("walkFront");
+            animatora.SetBool("isMoving", true);
+            animatora.SetBool("isRight", false);
+            animatora.SetBool("isLeft", false);
+            animatora.SetBool("isFront", true);
+            animatora.SetBool("isBack", false);
+            animatora.SetBool("isVertical", true);
+            animatora.SetBool("isHorizontal", false);
+            
         }
 
         /* 8 directional shooting 
@@ -142,6 +178,27 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(col.gameObject);
                 objectives.text = "It might look friendl-\nNever mind, that thing is clearly hostile!";
+                StartCoroutine(TextDisappearCoroutine());
+            }
+
+            else if(col.gameObject.name == "Objective5")
+            {
+                Destroy(col.gameObject);
+                objectives.text = "Turn back or else you will die";
+                StartCoroutine(TextDisappearCoroutine());
+            }
+            
+            else if(col.gameObject.name == "Objective6")
+            {
+                Destroy(col.gameObject);
+                objectives.text = "If you keep going down you just might find something";
+                StartCoroutine(TextDisappearCoroutine());
+            }
+
+            else if(col.gameObject.name == "Objective7")
+            {
+                Destroy(col.gameObject);
+                objectives.text = "The exit is near, keep going";
                 StartCoroutine(TextDisappearCoroutine());
             }
         }
