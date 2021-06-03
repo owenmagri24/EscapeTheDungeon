@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Text objectives;
 
+    public float timer = 1.0f;
+
     public Animator animatora;
     void Start() {
         animatora = gameObject.GetComponent<Animator>();
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         DirectionalShooting();
+        IdleTime();
     }
 
     void FixedUpdate() {
@@ -104,6 +107,11 @@ public class PlayerController : MonoBehaviour
             animatora.SetBool("isVertical", true);
             animatora.SetBool("isHorizontal", false);
             animatora.SetBool("isAttacking", false);
+        }
+
+        else if (!Input.GetKeyDown(KeyCode.W) && !Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.D))
+        {
+            animatora.SetBool("isMoving", false);
         }
 
         /* 8 directional shooting 
@@ -201,6 +209,30 @@ public class PlayerController : MonoBehaviour
                 Destroy(col.gameObject);
                 objectives.text = "The exit is near, keep going";
                 StartCoroutine(TextDisappearCoroutine());
+            }
+        }
+
+        void IdleTime()
+        {
+            timer -= Time.deltaTime;
+                if (timer <= 0.0f)
+                {
+                    timer = 0.2f;
+                    timerEnded();
+                }
+        }
+
+        void timerEnded()
+        {
+            if (!this.transform.hasChanged)
+            {
+                animatora.Play("idle");
+            }
+            transform.hasChanged = false;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+
             }
         }
 
