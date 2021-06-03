@@ -29,4 +29,12 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("GameComplete");
     }
+
+    public void LoadScene(int scene){
+        SceneManager.LoadScene(scene);
+    }
+
+    public void QuitGame(){
+        Application.Quit();
+    }
 }

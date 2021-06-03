@@ -34,8 +34,6 @@ public class PlayerController : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         DirectionalShooting();
-
-        Debug.Log(rb.velocity.magnitude); //check after
     }
 
     void FixedUpdate() {
